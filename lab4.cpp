@@ -4,6 +4,7 @@ template < typename T >
 class Para
 {
 public:
+    Para() {}
     Para(T pobiekt, T dobiekt) : pierwszy_obiekt{pobiekt}, drugi_obiekt{dobiekt} {}
 
     T getPierwszyObiekt() const { return pierwszy_obiekt; }
@@ -13,6 +14,15 @@ public:
 
 private:
     T pierwszy_obiekt, drugi_obiekt;
+};
+
+template < typename T, unsigned int N >
+class TablicaPar
+{
+public:
+    
+private:
+    Para< T > tablica[N];
 };
 
 int main()
@@ -25,6 +35,8 @@ int main()
 
     std::cout << paraInt.suma() << std::endl;
     std::cout << paraDouble.suma() << std::endl;
+
+    TablicaPar< int, 3 > TablicaTrzechInt;
 }
 
 /* Po uruchomieniu otrzymano:
