@@ -20,7 +20,8 @@ template < typename T, unsigned int N >
 class TablicaPar
 {
 public:
-    
+    Para< T >& operator[](int i) { return tablica[i]; }
+
 private:
     Para< T > tablica[N];
 };
@@ -37,6 +38,11 @@ int main()
     std::cout << paraDouble.suma() << std::endl;
 
     TablicaPar< int, 3 > TablicaTrzechInt;
+    TablicaTrzechInt[0] = paraInt;
+    std::cout << TablicaTrzechInt[0].suma() << std::endl;
+    Para< int > paraInt2(4, 5);
+    TablicaTrzechInt[1] = paraInt2;
+    std::cout << TablicaTrzechInt[1].suma() << std::endl;
 }
 
 /* Po uruchomieniu otrzymano:
@@ -44,4 +50,6 @@ int main()
   1.1
   3
   3.3
+  3
+  9
 */
