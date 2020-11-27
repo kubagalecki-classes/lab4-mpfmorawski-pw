@@ -28,28 +28,36 @@ private:
 
 int main()
 {
-    Para< int > paraInt(1, 2);
-    std::cout << paraInt.getDrugiObiekt() << std::endl;
-
-    Para< double > paraDouble(1.1, 2.2);
-    std::cout << paraDouble.getPierwszyObiekt() << std::endl;
-
-    std::cout << paraInt.suma() << std::endl;
-    std::cout << paraDouble.suma() << std::endl;
+    Para< int > paraInt1(1, 2);
+    Para< int > paraInt2(3, 4);
+    Para< int > paraInt3(5, 6);
 
     TablicaPar< int, 3 > TablicaTrzechInt;
-    TablicaTrzechInt[0] = paraInt;
-    std::cout << TablicaTrzechInt[0].suma() << std::endl;
-    Para< int > paraInt2(4, 5);
+    TablicaTrzechInt[0] = paraInt1;
     TablicaTrzechInt[1] = paraInt2;
-    std::cout << TablicaTrzechInt[1].suma() << std::endl;
+    TablicaTrzechInt[2] = paraInt3;
+    int sumaInt         = 0;
+    for (int i = 0; i < 3; i++)
+        sumaInt += TablicaTrzechInt[i].suma();
+
+    std::cout << "Suma par tablicy z int: " << sumaInt << std::endl;
+
+    Para< double > paraDbl1(1.1, 2.2);
+    Para< double > paraDbl2(3.3, 4.4);
+    Para< double > paraDbl3(5.5, 6.6);
+
+    TablicaPar< double, 3 > TablicaTrzechDbl;
+    TablicaTrzechDbl[0] = paraDbl1;
+    TablicaTrzechDbl[1] = paraDbl2;
+    TablicaTrzechDbl[2] = paraDbl3;
+    double sumaDbl      = 0.;
+    for (int i = 0; i < 3; i++)
+        sumaDbl += TablicaTrzechDbl[i].suma();
+
+    std::cout << "Suma par tablicy z double: " << sumaDbl << std::endl;
 }
 
 /* Po uruchomieniu otrzymano:
-  2
-  1.1
-  3
-  3.3
-  3
-  9
+  Suma par tablicy z int: 21
+  Suma par tablicy z double: 23.1
 */
