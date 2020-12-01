@@ -28,32 +28,23 @@ private:
 
 int main()
 {
-    Para< int > paraInt1(1, 2);
-    Para< int > paraInt2(3, 4);
-    Para< int > paraInt3(5, 6);
 
     TablicaPar< int, 3 > TablicaTrzechInt;
-    TablicaTrzechInt[0] = paraInt1;
-    TablicaTrzechInt[1] = paraInt2;
-    TablicaTrzechInt[2] = paraInt3;
+    TablicaTrzechInt[0] = Para< int >{1, 2};
+    TablicaTrzechInt[1] = Para< int >{3, 4};
+    TablicaTrzechInt[2] = Para< int >{5, 6};
     int sumaInt         = 0;
     for (int i = 0; i < 3; i++)
         sumaInt += TablicaTrzechInt[i].suma();
-
     std::cout << "Suma par tablicy z int: " << sumaInt << std::endl;
 
-    Para< double > paraDbl1(1.1, 2.2);
-    Para< double > paraDbl2(3.3, 4.4);
-    Para< double > paraDbl3(5.5, 6.6);
-
     TablicaPar< double, 3 > TablicaTrzechDbl;
-    TablicaTrzechDbl[0] = paraDbl1;
-    TablicaTrzechDbl[1] = paraDbl2;
-    TablicaTrzechDbl[2] = paraDbl3;
+    TablicaTrzechDbl[0] = Para< double >{1.1, 2.2};
+    TablicaTrzechDbl[1] = Para< double >{3.3, 4.4};
+    TablicaTrzechDbl[2] = Para< double >{5.5, 6.6};
     double sumaDbl      = 0.;
     for (int i = 0; i < 3; i++)
         sumaDbl += TablicaTrzechDbl[i].suma();
-
     std::cout << "Suma par tablicy z double: " << sumaDbl << std::endl;
 }
 
