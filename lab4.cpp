@@ -26,26 +26,25 @@ private:
     Para< T > tablica[N];
 };
 
+template < typename T >
+struct S
+{
+    void print() { puts("Szablon ogólny"); }
+};
+
+template <>
+struct S< double >
+{
+    void print() { puts("Specjalizacja dla double"); }
+};
+
 int main()
 {
 
-    TablicaPar< int, 3 > TablicaTrzechInt;
-    TablicaTrzechInt[0] = Para< int >{1, 2};
-    TablicaTrzechInt[1] = Para< int >{3, 4};
-    TablicaTrzechInt[2] = Para< int >{5, 6};
-    int sumaInt         = 0;
-    for (int i = 0; i < 3; i++)
-        sumaInt += TablicaTrzechInt[i].suma();
-    std::cout << "Suma par tablicy z int: " << sumaInt << std::endl;
-
-    TablicaPar< double, 3 > TablicaTrzechDbl;
-    TablicaTrzechDbl[0] = Para< double >{1.1, 2.2};
-    TablicaTrzechDbl[1] = Para< double >{3.3, 4.4};
-    TablicaTrzechDbl[2] = Para< double >{5.5, 6.6};
-    double sumaDbl      = 0.;
-    for (int i = 0; i < 3; i++)
-        sumaDbl += TablicaTrzechDbl[i].suma();
-    std::cout << "Suma par tablicy z double: " << sumaDbl << std::endl;
+    S< int >    StructInt;
+    S< double > StructDouble;
+    StructInt.print();
+    StructDouble.print();
 }
 
 /* Po uruchomieniu otrzymano:
