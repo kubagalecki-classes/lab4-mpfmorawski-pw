@@ -45,20 +45,26 @@ struct S< double >
     void print() { puts("Specjalizacja dla double"); }
 };
 
+template < typename T >
+T iloczyn(T tab[], int n)
+{
+    T wynik = static_cast< T >(1);
+    for (int i = 0; i < n; i++)
+        wynik = wynik * tab[i];
+    return wynik;
+}
+
 int main()
 {
-
-    TablicaPar< int, 3 > TablicaTrzechInt;
-    TablicaTrzechInt[0] = Para< int >{1, 2};
-    TablicaTrzechInt[1] = Para< int >{3, 4};
-    TablicaTrzechInt[2] = Para< int >{5, 6};
-    std::cout << "Suma pierwszej pary w TablicaTrzechInt: " << TablicaTrzechInt[0].suma()
-              << std::endl;
-
-    TablicaPar< double, 0 > PustaTablicaDouble;
+    int tab1[]   = {1, 2, 3};
+    int silnia_3 = iloczyn< int >(tab1, 3);
+    std::cout << "3! = " << silnia_3 << std::endl;
+    int tab2[]   = {1, 2, 3, 4, 5};
+    int silnia_5 = iloczyn(tab2, 5);
+    std::cout << "5! = " << silnia_5 << std::endl;
 }
 
 /* Po uruchomieniu otrzymano:
-  Suma pierwszej pary w TablicaTrzechInt: 3
-  Tablica jest pusta
+  3! = 6
+  5! = 120
 */
