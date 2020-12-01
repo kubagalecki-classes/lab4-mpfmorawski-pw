@@ -27,6 +27,13 @@ private:
 };
 
 template < typename T >
+class TablicaPar< T, 0 >
+{
+public:
+    TablicaPar() { puts("Tablica jest pusta"); }
+};
+
+template < typename T >
 struct S
 {
     void print() { puts("Szablon ogólny"); }
@@ -41,13 +48,17 @@ struct S< double >
 int main()
 {
 
-    S< int >    StructInt;
-    S< double > StructDouble;
-    StructInt.print();
-    StructDouble.print();
+    TablicaPar< int, 3 > TablicaTrzechInt;
+    TablicaTrzechInt[0] = Para< int >{1, 2};
+    TablicaTrzechInt[1] = Para< int >{3, 4};
+    TablicaTrzechInt[2] = Para< int >{5, 6};
+    std::cout << "Suma pierwszej pary w TablicaTrzechInt: " << TablicaTrzechInt[0].suma()
+              << std::endl;
+
+    TablicaPar< double, 0 > PustaTablicaDouble;
 }
 
 /* Po uruchomieniu otrzymano:
-  Suma par tablicy z int: 21
-  Suma par tablicy z double: 23.1
+  Suma pierwszej pary w TablicaTrzechInt: 3
+  Tablica jest pusta
 */
