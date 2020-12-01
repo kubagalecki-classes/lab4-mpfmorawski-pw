@@ -1,5 +1,6 @@
 #include <iostream>
 
+/* PARA */
 template < typename T >
 class Para
 {
@@ -15,7 +16,9 @@ public:
 private:
     T pierwszy_obiekt, drugi_obiekt;
 };
+/* KONIEC PARA */
 
+/* TABLICA PAR */
 template < typename T, unsigned int N >
 class TablicaPar
 {
@@ -32,7 +35,9 @@ class TablicaPar< T, 0 >
 public:
     TablicaPar() { puts("Tablica jest pusta"); }
 };
+/* KONIEC TABLICA PAR */
 
+/* ZADANIE 6 */
 template < typename T >
 struct S
 {
@@ -44,7 +49,9 @@ struct S< double >
 {
     void print() { puts("Specjalizacja dla double"); }
 };
+/* KONIEC ZADANIE 6 */
 
+/* ZADANIE 8 - Szablony funkcji */
 template < typename T >
 T iloczyn(T tab[], int n)
 {
@@ -53,18 +60,22 @@ T iloczyn(T tab[], int n)
         wynik = wynik * tab[i];
     return wynik;
 }
+/* KONIEC ZADANIE 8 */
+
+/*  ZADANIE 9 - Dedukcja arguemntów funkcji */
+template < typename T >
+T sumaPary(const Para< T >& para)
+{
+    return para.suma();
+}
+/*  KONIEC ZADANIE 9 */
 
 int main()
 {
-    int tab1[]   = {1, 2, 3};
-    int silnia_3 = iloczyn< int >(tab1, 3);
-    std::cout << "3! = " << silnia_3 << std::endl;
-    int tab2[]   = {1, 2, 3, 4, 5};
-    int silnia_5 = iloczyn(tab2, 5);
-    std::cout << "5! = " << silnia_5 << std::endl;
+    Para< int > para{3, 5};
+    std::cout << sumaPary(para) << std::endl;
 }
 
 /* Po uruchomieniu otrzymano:
-  3! = 6
-  5! = 120
+  8
 */
